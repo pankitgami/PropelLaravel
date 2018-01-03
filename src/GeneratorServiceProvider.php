@@ -47,8 +47,7 @@ class GeneratorServiceProvider extends ServiceProvider
                 $c->setName('propel:' . $c->getName());
                 $c->setAliases([]);
 
-                $this->app[$command] = $this->app->share(
-                    function ($app) use ($c) {
+                $this->app->singleton($command, function ($app) use ($c) {
                         return $c;
                     }
                 );
